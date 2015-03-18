@@ -1,0 +1,11 @@
+language: objective-c
+env:
+ global:
+   - "MODULE_NAME=ti.styledlabel"
+before_install:
+    - MODULE_ROOT=$PWD
+script: 
+    - echo "Hello"
+after_success: # and this only on success
+  - curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
+  - source deploy.sh
