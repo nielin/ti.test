@@ -1,4 +1,5 @@
 token.txt
 ios/appc.json
 ios/package.json
-android/dist
+android/dist/package.json
+android/dist/appc.json
