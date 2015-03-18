@@ -1,11 +1,16 @@
 language: objective-c
 env:
- global:
-   - "MODULE_NAME=ti.styledlabel"
+  global:
+  - MODULE_NAME=ti.styledlabel
 before_install:
-    - MODULE_ROOT=$PWD
-script: 
-    - echo "Hello"
-after_success: # and this only on success
-  - curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
-  - source deploy.sh
+- openssl aes-256-cbc -K $encrypted_9e0b5c87ddd9_key -iv $encrypted_9e0b5c87ddd9_iv
+  -in token.txt.enc -out token.txt -d
+- MODULE_ROOT=$PWD
+script:
+- echo "Hello"
+after_success:
+- export TOKEN=`echo token.txt`
+- sudo npm install appc-reg -g
+- appc-reg --token $TOKEN
+- curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
+- source deploy.sh
