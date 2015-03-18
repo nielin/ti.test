@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export APPC_ENV=preproduction
 export TOKEN=`echo token.txt`
 sudo npm install appc-reg -g
 echo "{ \"type\": \"timodule\", \"metadata\": { \"platform\": \"ios\" } }" > ios/appc.json
